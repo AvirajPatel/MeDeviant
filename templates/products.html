@@ -1,0 +1,124 @@
+{% load static %}
+{% static 'images' as baseUrl %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - MeDeviant</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html"><img src="{% static 'images/logo.png' %}" width="125px"></a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li> <a href="index.html">Home</a> </li>
+                    <li> <a href="products.html">Products</a> </li>
+                    <li> <a href="">Contact</a> </li>
+                    <li> <a href="account.html">Account</a> </li>
+                </ul>
+            </nav>
+            <a href="cart.html"><img src="{% static 'images/cart.png' %}" width="30px" height="30px"></a>
+            <img src="{% static 'images/menu.png' %}" class="menu-icon" onclick="menutoggle()">
+        </div>
+    </div>
+
+    
+    
+    <div class="small-container">
+
+        <div class="row row-2">
+            <h2>All Products</h2>
+        </div>
+
+        <div class="row">
+
+            {% for med in meds %}
+
+            <div class="col-4">
+                <img src="{{baseUrl}}/{{med.img}}" >
+                <h4>{{med.name}}</h4>
+                <div class="rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p>{{med.price}}</p>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+<!---------------------------------------- footer --------------------------------------------->
+
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col-1">
+                <h3>Coming Soon</h3>
+                <p>App for Android and iOS mobile phone coming soon</p>
+            </div>
+            <div class="footer-col-2">
+                <img src="{% static 'images/logo1.png' %}">
+                <p>Our Purpose Is To Sustainably Make The Benefits Of The Medicine To The Many. </p>
+            </div>
+            <div class="footer-col-3">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li>Coupons</li>
+                    <li>Blog Post</li>
+                    <li>Return Policy</li>
+                    <li>Join Affiliate</li>
+                </ul>
+            </div>
+            <div class="footer-col-4">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li>Facebook</li>
+                    <li>Twitter</li>
+                    <li>Instagram</li>
+                    <li>Youtube</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright"> @MeDeviant </p>
+    </div>
+</div>
+
+<!----------------------------------- js for toggle menu -------------------------------------->
+
+<script>
+    var MenuItems = document.getElementById("MenuItems");
+
+    MenuItems.style.maxHeight = "0px";
+
+    function menutoggle(){
+        if(MenuItems.style.maxHeight == "0px")
+        {
+            MenuItems.style.maxHeight = "200px"
+        }
+        else
+        {
+            MenuItems.style.maxHeight = "0px"
+        }
+    }
+</script>
+
+</body>
+</html>
